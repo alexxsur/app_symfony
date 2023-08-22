@@ -8,6 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 class HelloController extends AbstractController {
 
     function hello(){
-        return $this->render('base.html.twig');
+        $title = "utilisateurs";
+        $users = ["Mickey", "Leo", "Donnie", "Raph"];
+
+        return $this->render("hello.html.twig",
+            ['title' => $title, 'array' => $users]);
     }
 }
