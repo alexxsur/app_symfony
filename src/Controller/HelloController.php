@@ -8,6 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 class HelloController extends AbstractController {
 
     function hello(){
-        return new Response('Hello !');
+        return $this->render('base.html.twig');
     }
 }
