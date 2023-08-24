@@ -8,16 +8,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HelloController extends AbstractController {
+    /**
+    * @Route("hello/{param}", requirements={"param"="\d+"}, methods={"GET"})
+    */
+    function helloNumber($param){
+        return new Response('Hello! number:' . $param);
+    }
 
     /**
-    * @Route("hello")
+    * @Route("hello/{param}")
     */
-    function hello(Request $request){
-        $params = $request->query->all();
-        $string = "Les paramètres sont: </br>";
-        foreach ($params as $key => $value) {
-            $string = $string . '-' . $key . ':' . $value . '</br>';
-        }
-        return new Response($string);
+    function helloDefault($param){
+        return new Response('Hello!:' . $param);
     }
 }
