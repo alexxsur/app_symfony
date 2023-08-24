@@ -8,17 +8,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HelloController extends AbstractController {
+
     /**
-    * @Route("hello/{param}", requirements={"param"="\d+"}, methods={"GET"})
+    * @Route("hello")
     */
-    function helloNumber($param){
-        return new Response('Hello! number:' . $param);
+    function hello(){
+        return $this->render('hello.html.twig');
     }
 
     /**
-    * @Route("hello/{param}")
+    * @Route("hello/{name}", name="helloWithName")
     */
-    function helloDefault($param){
-        return new Response('Hello!:' . $param);
+    function helloWithName($name){
+        return new Response('Hello ' . $name);
     }
 }
