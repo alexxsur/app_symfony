@@ -10,16 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class HelloController extends AbstractController {
 
     /**
-    * @Route("hello")
+    * @Route({
+    *      "fr": "/bonjour",
+    *      "en": "/hello"})
     */
-    function hello(){
-        return $this->render('hello.html.twig');
+    function hello(Request $request){
+        $locale = $request->getLocale();
+        return new Response('Hello, locale :' . $locale);
     }
 
-    /**
-    * @Route("hello/{name}", name="helloWithName")
-    */
-    function helloWithName($name){
-        return new Response('Hello ' . $name);
-    }
 }
