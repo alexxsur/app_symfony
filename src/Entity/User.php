@@ -6,6 +6,7 @@ class User{
 
     protected $name;
     protected $email;
+    protected $date;
 
     /**
      * Get the value of name
@@ -17,8 +18,6 @@ class User{
 
     /**
      * Set the value of name
-     *
-     * @return  self
      */
     public function setName($name)
     {
@@ -35,11 +34,25 @@ class User{
 
     /**
      * Set the value of email
-     *
-     * @return  self
      */
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    /**
+     * Get the value of date
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set the value of date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
     }
 }
