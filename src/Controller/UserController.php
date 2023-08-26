@@ -20,6 +20,13 @@ class UserController extends AbstractController {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $userInfos = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($userInfos);
+            $entityManager->flush();
+
             return new Response("Formulaire validé.");
         }
 
