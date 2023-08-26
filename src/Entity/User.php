@@ -2,57 +2,57 @@
 
 namespace App\Entity;
 
-class User{
+use App\Repository\UserRepository;
+use Doctrine\ORM\Mapping as ORM;
 
-    protected $name;
-    protected $email;
-    protected $date;
+/**
+ * @ORM\Entity(repositoryClass=UserRepository::class)
+ */
+class User
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
     /**
-     * Get the value of name
+     * @ORM\Column(type="string", length=150)
      */
-    public function getName()
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=200)
+     */
+    private $email;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * Set the value of name
-     */
-    public function setName($name)
+    public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
     }
 
-    /**
-     * Get the value of email
-     */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * Set the value of email
-     */
-    public function setEmail($email)
+    public function setEmail(string $email): self
     {
         $this->email = $email;
-    }
 
-    /**
-     * Get the value of date
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * Set the value of date
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
+        return $this;
     }
 }
